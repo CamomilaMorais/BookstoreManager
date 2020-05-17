@@ -3,6 +3,7 @@ package com.camomila.bookstoremanager.controller;
 import com.camomila.bookstoremanager.dto.BookDTO;
 import com.camomila.bookstoremanager.dto.MessageResponseDTO;
 import com.camomila.bookstoremanager.entity.Book;
+import com.camomila.bookstoremanager.exception.BookNotFoundexception;
 import com.camomila.bookstoremanager.repository.BookRepository;
 import com.camomila.bookstoremanager.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public BookDTO findById(@PathVariable Long id){
+    public BookDTO findById(@PathVariable Long id) throws BookNotFoundexception {
         return bookService.findById(id);
     }
 }

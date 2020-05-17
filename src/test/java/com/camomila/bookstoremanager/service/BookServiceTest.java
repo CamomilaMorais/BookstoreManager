@@ -2,6 +2,7 @@ package com.camomila.bookstoremanager.service;
 
 import com.camomila.bookstoremanager.dto.BookDTO;
 import com.camomila.bookstoremanager.entity.Book;
+import com.camomila.bookstoremanager.exception.BookNotFoundexception;
 import com.camomila.bookstoremanager.repository.BookRepository;
 import com.camomila.bookstoremanager.utils.BookUtils;
 import org.junit.jupiter.api.Assertions;
@@ -27,7 +28,7 @@ public class BookServiceTest {
     private BookService bookService;
 
     @Test
-    void whenGivenExistingIdThenReturnThisBook(){
+    void whenGivenExistingIdThenReturnThisBook() throws BookNotFoundexception {
         Book expectedFoundBook = BookUtils.createFakeBook();
 
         when(bookRepository.findById(expectedFoundBook.getId())).thenReturn(Optional.of(expectedFoundBook));
